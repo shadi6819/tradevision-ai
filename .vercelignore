@@ -1,8 +1,5 @@
 .local/
 artifacts/mockup-sandbox/
-artifacts/api-server/
-lib/
-scripts/
 node_modules/
 **/dist/
 **/.replit-artifact/
