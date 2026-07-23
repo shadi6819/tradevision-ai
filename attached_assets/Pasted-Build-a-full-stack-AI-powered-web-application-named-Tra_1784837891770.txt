@@ -1,0 +1,418 @@
+Build a full-stack AI-powered web application named "TradeVision AI" that is optimized for deployment on Vercel.
+
+## Tech Stack
+- Next.js 15 (App Router)
+- TypeScript
+- TailwindCSS
+- shadcn/ui
+- Framer Motion
+- Vercel AI SDK
+- OpenAI API support (API key via environment variable)
+- Fully responsive
+- Dark modern trading dashboard UI
+- No database required initially
+- Ready for one-click Vercel deployment
+
+==========================
+MAIN FEATURES
+==========================
+
+The homepage should allow users to choose between:
+
+1. Binary Analysis
+2. Forex Analysis
+
+After selecting the mode, the UI changes accordingly.
+
+==================================
+BINARY ANALYSIS PAGE
+==================================
+
+Before uploading a screenshot, ask the user:
+
+Trading Platform:
+- Quotex
+- Pocket Option
+- Binomo
+- IQ Option
+- Expert Option
+- Other
+
+Then ask:
+
+Market Type:
+- Real Market
+- OTC Market
+
+The selected options must be included in the AI analysis prompt.
+
+User uploads a screenshot.
+
+Accepted:
+PNG
+JPG
+JPEG
+WEBP
+
+After upload, AI analyzes the screenshot.
+
+The AI must output a professional report including:
+
+--------------------------------
+Trade Decision
+--------------------------------
+
+Recommendation:
+
+🟢 UP
+
+OR
+
+🔴 DOWN
+
+OR
+
+⚪ NO TRADE
+
+--------------------------------
+Confidence
+--------------------------------
+
+Example
+
+Confidence
+87%
+
+--------------------------------
+Risk Level
+--------------------------------
+
+Very Low
+Low
+Medium
+High
+Extreme
+
+--------------------------------
+Estimated Probability
+--------------------------------
+
+Win Probability
+
+Loss Probability
+
+Estimated Accuracy
+
+--------------------------------
+Recommended Expiry
+--------------------------------
+
+15 Seconds
+
+30 Seconds
+
+1 Minute
+
+2 Minutes
+
+3 Minutes
+
+5 Minutes
+
+Based on chart structure.
+
+--------------------------------
+Trade Quality
+--------------------------------
+
+Excellent
+
+Good
+
+Average
+
+Weak
+
+Avoid
+
+--------------------------------
+Market Structure Analysis
+--------------------------------
+
+Explain:
+
+Trend
+
+Higher High
+
+Lower Low
+
+Break of Structure
+
+Support
+
+Resistance
+
+Momentum
+
+Trend Strength
+
+Pullback
+
+Liquidity Area
+
+Fakeout possibility
+
+Breakout possibility
+
+Range Market
+
+Consolidation
+
+Volatility
+
+Market Bias
+
+--------------------------------
+Candlestick Analysis
+--------------------------------
+
+Explain visible candle formations.
+
+Examples
+
+Engulfing
+
+Pin Bar
+
+Hammer
+
+Doji
+
+Inside Bar
+
+Outside Bar
+
+Morning Star
+
+Evening Star
+
+Strong Bull Candle
+
+Strong Bear Candle
+
+Rejection Candle
+
+--------------------------------
+Technical Logic
+--------------------------------
+
+The AI should explain why it chose UP, DOWN or NO TRADE.
+
+Explain every visible reason.
+
+Examples
+
+Trend continuation
+
+Support bounce
+
+Resistance rejection
+
+Momentum exhaustion
+
+Buyer dominance
+
+Seller dominance
+
+Volume assumption from price action
+
+Liquidity sweep
+
+Breakout confirmation
+
+False breakout
+
+Compression
+
+Reversal signal
+
+No confirmation
+
+Mixed signals
+
+Weak momentum
+
+--------------------------------
+Trading Advice
+--------------------------------
+
+Explain
+
+Why enter now
+
+Why wait
+
+Why avoid
+
+Where risk exists
+
+How experienced traders would interpret this setup
+
+What confirmation is still missing
+
+--------------------------------
+Summary
+--------------------------------
+
+One paragraph summarizing the analysis.
+
+==================================
+FOREX ANALYSIS PAGE
+==================================
+
+User first selects:
+
+Platform
+
+Exness
+
+MetaTrader 4
+
+MetaTrader 5
+
+TradingView
+
+cTrader
+
+Other
+
+Then uploads screenshot.
+
+The AI analyzes forex charts and provides:
+
+Trade Direction
+
+BUY
+
+SELL
+
+NO TRADE
+
+Confidence
+
+Risk
+
+Suggested Entry Zone
+
+Suggested Stop Loss Zone
+
+Suggested Take Profit Zone
+
+Risk Reward Ratio
+
+Trend Direction
+
+Support
+
+Resistance
+
+Supply Zone
+
+Demand Zone
+
+Liquidity
+
+Break of Structure
+
+Change of Character
+
+Fair Value Gap (if visible)
+
+Trendline
+
+EMA interaction (if visible)
+
+RSI observation (if visible)
+
+MACD observation (if visible)
+
+Candlestick explanation
+
+Momentum explanation
+
+Market Structure explanation
+
+Volatility explanation
+
+Professional summary
+
+==================================
+IMPORTANT AI INSTRUCTIONS
+==================================
+
+The AI should never randomly guess.
+
+If the uploaded chart is blurry, cropped, too zoomed, lacks timeframe visibility, or lacks sufficient information, it must clearly respond:
+
+NO TRADE
+
+and explain why.
+
+The AI must always explain its reasoning.
+
+Never only say UP or DOWN.
+
+Always explain the logic.
+
+==================================
+UI DESIGN
+==================================
+
+Modern black trading dashboard.
+
+Glowing blue accents.
+
+Rounded cards.
+
+Glassmorphism.
+
+Animated upload area.
+
+Loading animation during analysis.
+
+Confidence meter.
+
+Risk badge colors.
+
+Professional typography.
+
+Smooth animations.
+
+Mobile responsive.
+
+==================================
+DEPLOYMENT
+==================================
+
+Project must be production-ready.
+
+No localhost-only code.
+
+Environment variables:
+
+OPENAI_API_KEY
+
+Use server-side API routes.
+
+Ready for Vercel deployment without modification.
+
+==================================
+IMPORTANT DISCLAIMER
+==================================
+
+Display on every analysis:
+
+"This analysis is generated by AI based only on the uploaded chart image. Financial markets are inherently uncertain, and no prediction is guaranteed. Always perform your own analysis and manage risk appropriately."
+
+Never claim guaranteed profits or certainty. The application should present its output as an analytical opinion based on visible chart patterns and user-selected market context, not as financial advice.

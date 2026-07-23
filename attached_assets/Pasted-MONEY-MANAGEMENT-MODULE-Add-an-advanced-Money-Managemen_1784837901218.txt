@@ -1,0 +1,146 @@
+MONEY MANAGEMENT MODULE
+
+Add an advanced Money Management section before the screenshot upload.
+
+The user must be able to enter:
+
+* Current Account Balance
+* Account Currency (USD, BDT, EUR, etc.)
+* Maximum Risk Per Trade (%) (Optional)
+* Experience Level
+    * Beginner
+    * Intermediate
+    * Advanced
+
+After analyzing the uploaded chart, the AI must also generate a professional Money Management Report.
+
+Position Size Recommendation
+
+Based on the user’s balance and the confidence level of the analysis, recommend:
+
+* Suggested Trade Amount
+* Maximum Safe Trade Amount
+* Conservative Trade Amount
+* Aggressive Trade Amount
+
+The AI must explain why those amounts are suggested.
+
+Example:
+
+Current Balance:
+$100
+
+Recommended Trade:
+$2
+
+Maximum Safe Trade:
+$3
+
+Aggressive Option:
+$5
+
+Reason:
+The detected setup has medium confidence and moderate risk, so risking only a small percentage of the account is preferable.
+
+⸻
+
+Risk Management
+
+Display:
+
+* Recommended Risk %
+* Maximum Daily Risk
+* Maximum Consecutive Losses Before Stopping
+* Recommended Daily Trade Limit
+* Whether the setup is worth taking or skipping
+
+⸻
+
+Martingale Evaluation
+
+The AI must analyze whether using Martingale would be appropriate for this specific setup.
+
+Display one of:
+
+* ✅ Martingale Not Recommended
+* ⚠️ Martingale Use With Extreme Caution
+* ⚪ Martingale Optional (High-Risk)
+* ❌ Avoid Martingale Completely
+
+Then explain why.
+
+If Martingale is considered, suggest a maximum number of recovery steps.
+
+Example:
+
+Recommended Recovery Steps:
+0
+
+or
+
+Maximum Recovery Steps:
+1
+
+or
+
+Maximum Recovery Steps:
+2
+
+Never recommend unlimited Martingale.
+
+The explanation must consider:
+
+* Confidence level
+* Market conditions
+* Volatility
+* Chart quality
+* Probability of consecutive losses
+
+⸻
+
+Session Advice
+
+Recommend:
+
+* Whether to trade now or wait
+* Whether to reduce position size
+* Whether to skip the trade entirely
+* Whether market conditions are too risky
+
+⸻
+
+Capital Protection
+
+If the setup has low confidence or elevated risk, the AI should prioritize protecting capital instead of encouraging a trade.
+
+Example:
+
+Recommended Action:
+NO TRADE
+
+Reason:
+Current market structure lacks sufficient confirmation. Preserving capital is the better decision.
+
+⸻
+
+Final Trading Plan
+
+Generate a concise trading plan including:
+
+* Trade Decision (BUY / SELL / UP / DOWN / NO TRADE)
+* Confidence Score
+* Suggested Trade Amount
+* Suggested Expiry (Binary) or Entry/SL/TP (Forex)
+* Risk Level
+* Martingale Recommendation
+* Maximum Recovery Steps
+* Daily Risk Reminder
+* Brief explanation of the overall strategy
+
+Important Behavior Rules
+
+* Never encourage increasing trade size after a loss.
+* Never imply that losses can be recovered with certainty.
+* Never recommend unlimited or guaranteed-profit Martingale strategies.
+* Always prioritize disciplined risk management and capital preservation over taking more trades.
+* Base all money management suggestions on the user’s provided balance, selected market type, and the confidence of the chart analysis.
