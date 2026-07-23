@@ -3,13 +3,15 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: TradeVision AI API specification
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: analyze
+    description: AI-powered chart analysis
 paths:
   /healthz:
     get:
@@ -24,6 +26,71 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /analyze/binary:
+    post:
+      operationId: analyzeBinary
+      tags: [analyze]
+      summary: Analyze binary options chart
+      description: Upload a chart screenshot for AI-powered binary options analysis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BinaryAnalysisInput"
+      responses:
+        "200":
+          description: Binary analysis result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BinaryAnalysisResult"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /analyze/forex:
+    post:
+      operationId: analyzeForex
+      tags: [analyze]
+      summary: Analyze forex chart
+      description: Upload a chart screenshot for AI-powered forex analysis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ForexAnalysisInput"
+      responses:
+        "200":
+          description: Forex analysis result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForexAnalysisResult"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +101,255 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    BinaryAnalysisInput:
+      type: object
+      required:
+        - imageBase64
+        - platform
+        - marketType
+      properties:
+        imageBase64:
+          type: string
+          description: Base64-encoded chart image (PNG, JPG, JPEG, WEBP)
+        platform:
+          type: string
+          description: Trading platform (Quotex, Pocket Option, Binomo, IQ Option, Expert Option, Other)
+        marketType:
+          type: string
+          description: Market type (Real Market, OTC Market)
+        accountBalance:
+          type: ["number", "null"]
+          description: User account balance
+        accountCurrency:
+          type: ["string", "null"]
+          description: Account currency (USD, BDT, EUR, etc.)
+        maxRiskPercent:
+          type: ["number", "null"]
+          description: Maximum risk per trade as percentage
+        experienceLevel:
+          type: ["string", "null"]
+          description: Trader experience level (Beginner, Intermediate, Advanced)
+
+    ForexAnalysisInput:
+      type: object
+      required:
+        - imageBase64
+        - platform
+      properties:
+        imageBase64:
+          type: string
+          description: Base64-encoded chart image (PNG, JPG, JPEG, WEBP)
+        platform:
+          type: string
+          description: Trading platform (Exness, MetaTrader 4, MetaTrader 5, TradingView, cTrader, Other)
+        accountBalance:
+          type: ["number", "null"]
+          description: User account balance
+        accountCurrency:
+          type: ["string", "null"]
+          description: Account currency (USD, BDT, EUR, etc.)
+        maxRiskPercent:
+          type: ["number", "null"]
+          description: Maximum risk per trade as percentage
+        experienceLevel:
+          type: ["string", "null"]
+          description: Trader experience level (Beginner, Intermediate, Advanced)
+
+    MoneyManagementReport:
+      type: object
+      properties:
+        suggestedTradeAmount:
+          type: number
+        maxSafeTradeAmount:
+          type: number
+        conservativeAmount:
+          type: number
+        aggressiveAmount:
+          type: number
+        amountReasoning:
+          type: string
+        recommendedRiskPercent:
+          type: number
+        maxDailyRisk:
+          type: number
+        maxConsecutiveLosses:
+          type: number
+        dailyTradeLimit:
+          type: number
+        worthTaking:
+          type: boolean
+        martingaleRecommendation:
+          type: string
+          description: "NOT_RECOMMENDED | USE_WITH_CAUTION | OPTIONAL_HIGH_RISK | AVOID_COMPLETELY"
+        martingaleExplanation:
+          type: string
+        maxRecoverySteps:
+          type: number
+        sessionAdvice:
+          type: string
+        capitalProtectionNote:
+          type: string
+        finalTradingPlan:
+          type: string
+      required:
+        - suggestedTradeAmount
+        - maxSafeTradeAmount
+        - conservativeAmount
+        - aggressiveAmount
+        - amountReasoning
+        - recommendedRiskPercent
+        - maxDailyRisk
+        - maxConsecutiveLosses
+        - dailyTradeLimit
+        - worthTaking
+        - martingaleRecommendation
+        - martingaleExplanation
+        - maxRecoverySteps
+        - sessionAdvice
+        - capitalProtectionNote
+        - finalTradingPlan
+
+    BinaryAnalysisResult:
+      type: object
+      required:
+        - direction
+        - confidence
+        - riskLevel
+        - winProbability
+        - lossProbability
+        - estimatedAccuracy
+        - recommendedExpiry
+        - tradeQuality
+        - marketStructureAnalysis
+        - candlestickAnalysis
+        - technicalLogic
+        - tradingAdvice
+        - summary
+        - disclaimer
+      properties:
+        direction:
+          type: string
+          description: "UP | DOWN | NO_TRADE"
+        confidence:
+          type: number
+          description: Confidence percentage (0-100)
+        riskLevel:
+          type: string
+          description: "Very Low | Low | Medium | High | Extreme"
+        winProbability:
+          type: number
+          description: Win probability percentage (0-100)
+        lossProbability:
+          type: number
+          description: Loss probability percentage (0-100)
+        estimatedAccuracy:
+          type: number
+          description: Estimated accuracy percentage (0-100)
+        recommendedExpiry:
+          type: string
+          description: "15 Seconds | 30 Seconds | 1 Minute | 2 Minutes | 3 Minutes | 5 Minutes"
+        tradeQuality:
+          type: string
+          description: "Excellent | Good | Average | Weak | Avoid"
+        marketStructureAnalysis:
+          type: string
+          description: Detailed market structure analysis
+        candlestickAnalysis:
+          type: string
+          description: Candlestick pattern analysis
+        technicalLogic:
+          type: string
+          description: Technical reasoning for the decision
+        tradingAdvice:
+          type: string
+          description: Professional trading advice
+        summary:
+          type: string
+          description: One-paragraph summary
+        moneyManagement:
+          $ref: "#/components/schemas/MoneyManagementReport"
+        disclaimer:
+          type: string
+
+    ForexAnalysisResult:
+      type: object
+      required:
+        - direction
+        - confidence
+        - riskLevel
+        - entryZone
+        - stopLossZone
+        - takeProfitZone
+        - riskRewardRatio
+        - trendDirection
+        - marketStructureAnalysis
+        - candlestickAnalysis
+        - momentumAnalysis
+        - volatilityAnalysis
+        - technicalIndicators
+        - summary
+        - disclaimer
+      properties:
+        direction:
+          type: string
+          description: "BUY | SELL | NO_TRADE"
+        confidence:
+          type: number
+          description: Confidence percentage (0-100)
+        riskLevel:
+          type: string
+          description: "Very Low | Low | Medium | High | Extreme"
+        entryZone:
+          type: string
+          description: Suggested entry zone
+        stopLossZone:
+          type: string
+          description: Suggested stop loss zone
+        takeProfitZone:
+          type: string
+          description: Suggested take profit zone
+        riskRewardRatio:
+          type: string
+          description: Risk:reward ratio (e.g. 1:2.5)
+        trendDirection:
+          type: string
+          description: Overall trend direction
+        supportResistance:
+          type: string
+          description: Key support and resistance levels
+        supplyDemandZones:
+          type: string
+          description: Supply and demand zone analysis
+        liquidityAnalysis:
+          type: string
+          description: Liquidity and break of structure analysis
+        marketStructureAnalysis:
+          type: string
+          description: Full market structure analysis
+        candlestickAnalysis:
+          type: string
+          description: Candlestick pattern analysis
+        momentumAnalysis:
+          type: string
+          description: Momentum and RSI/MACD observations
+        volatilityAnalysis:
+          type: string
+          description: Volatility analysis
+        technicalIndicators:
+          type: string
+          description: EMA, RSI, MACD observations if visible
+        summary:
+          type: string
+          description: Professional summary
+        moneyManagement:
+          $ref: "#/components/schemas/MoneyManagementReport"
+        disclaimer:
+          type: string
