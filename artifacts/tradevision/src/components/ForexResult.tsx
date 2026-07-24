@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowDownRight, MinusCircle, AlertTriangle, Target, Shield, Crosshair } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { ForexAnalysisResult } from "@workspace/api-client-react";
+import { ForexAnalysisResult } from "@/api";
 import { cn } from "@/lib/utils";
 
 const container = {

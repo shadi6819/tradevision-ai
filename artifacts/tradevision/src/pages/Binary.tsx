@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { ActivitySquare, Loader2, ShieldAlert } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useAnalyzeBinary } from "@workspace/api-client-react";
+import { useAnalyzeBinary } from "@/api";
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

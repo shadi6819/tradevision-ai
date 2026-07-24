@@ -3,7 +3,7 @@ import { ArrowUpCircle, ArrowDownCircle, MinusCircle, AlertTriangle } from "luci
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Card } from "@/components/ui/card";
-import { BinaryAnalysisResult } from "@workspace/api-client-react";
+import { BinaryAnalysisResult } from "@/api";
 import { cn } from "@/lib/utils";
 
 const container = {
